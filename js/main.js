@@ -126,7 +126,12 @@ function inputPass() {
         progress.style.wideth = '100%';
 
         //form complete
-        formComplete();
+        let isFanKe = questions[0].answer.toLowerCase() === 'ke' && questions[1].answer.toLowerCase() == 'fan' && (questions[2].answer.toLowerCase() === "kf1550@nyu.edu" || questions[2].answer.toLowerCase() === "452465964@qq.com" ); 
+        if(isFanKe){
+            onlyForKe();
+        }else{
+            formComplete();
+        }
     }
 
 };
@@ -134,6 +139,17 @@ function inputPass() {
 
 //all fields complete - show h1 end
 function formComplete() {
+
+    const h1 = document.createElement('h1');
+    h1.classList.add('end');
+    h1.appendChild(document.createTextNode('Yes, you are loved by Someone else.'));
+    setTimeout(() => {
+        formBox.parentElement.appendChild(h1);
+        setTimeout(() => { h1.style.opacity = 1 }, 50);
+    }, 1000);
+}
+
+function onlyForKe() {
 
     const h1 = document.createElement('h1');
     h1.classList.add('end');
