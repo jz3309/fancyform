@@ -125,35 +125,24 @@ function inputPass() {
         formBox.className = 'close';
         progress.style.wideth = '100%';
 
-        //form complete
-        let isFanKe = questions[0].answer.toLowerCase() === 'ke' && questions[1].answer.toLowerCase() == 'fan' && (questions[2].answer.toLowerCase() === "kf1550@nyu.edu" || questions[2].answer.toLowerCase() === "452465964@qq.com" ); 
-        if(isFanKe){
-            onlyForKe();
-        }else{
-            formComplete();
-        }
+        //form complete    
+        let isFanKe = questions[0].answer.toLowerCase() === 'ke' && questions[1].answer.toLowerCase() == 'fan' && (questions[2].answer.toLowerCase() === "kf1550@nyu.edu" || questions[2].answer.toLowerCase() === "452465964@qq.com");
+        formComplete(isFanKe);
     }
 
 };
 
 
 //all fields complete - show h1 end
-function formComplete() {
+function formComplete(isFanKe) {
 
     const h1 = document.createElement('h1');
     h1.classList.add('end');
-    h1.appendChild(document.createTextNode('Yes, you are loved by Someone else.'));
-    setTimeout(() => {
-        formBox.parentElement.appendChild(h1);
-        setTimeout(() => { h1.style.opacity = 1 }, 50);
-    }, 1000);
-}
-
-function onlyForKe() {
-
-    const h1 = document.createElement('h1');
-    h1.classList.add('end');
-    h1.appendChild(document.createTextNode('Yes, you are loved by Jingxi.'));
+    if (isFanKe) {
+        h1.appendChild(document.createTextNode('Yes, you are loved by Jingxi.'));
+    } else {
+        h1.appendChild(document.createTextNode('Yes, you are loved by Someone else.'));
+    }
     setTimeout(() => {
         formBox.parentElement.appendChild(h1);
         setTimeout(() => { h1.style.opacity = 1 }, 50);
